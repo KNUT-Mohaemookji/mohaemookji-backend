@@ -1,12 +1,28 @@
 const express = require('express');
-const { isValidObjectId } = require('mongoose');
-const videoList = require('./src/api/videoList');
 
 const app = express();
-const port = 16260;
+const videoListApi = require('./src/api/videoList');
+const { logger } = require('./src/config/logger');
+const db = require('./src/models/dbConnect');
 
-app.listen(port, () => {
-  console.log(`Server Running on ${port} port`);
-});
+const port = 16261;
 
-app.use('/', videoList);
+async function main() {
+  app.listen(port, () => {
+    logger.info(`Server Running on ${port} port`);
+  });
+
+  app.use('/', videoListApi);
+
+  try {
+    db.connectToDb();
+  } catch (e) {
+    logger.error(`Server Init Error ${e}`);
+  }
+}
+
+main();
+
+module.exports = {
+  main,
+};
