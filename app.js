@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const videoListApi = require('./src/api/videoList');
 const { logger } = require('./src/config/logger');
-const db = require('./src/models/dbConnect');
+const db = require('./src/queries/dbConnect');
 
 const port = 16261;
 
