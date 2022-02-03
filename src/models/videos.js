@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const VideoSchema = new mongoose.Schema({
+const videoSchema = new mongoose.Schema({
   query: {
     type: String,
     required: true,
@@ -28,14 +28,16 @@ const VideoSchema = new mongoose.Schema({
   },
 });
 
+const mealModel = mongoose.model('Meal', videoSchema);
+const snackModel = mongoose.model('Snack', videoSchema);
+const sportModel = mongoose.model('Sport', videoSchema);
+const dietModel = mongoose.model('Diet', videoSchema);
+const wellbeingModel = mongoose.model('Wellbeing', videoSchema);
+
 module.exports = {
-  Meal: mongoose.model('Meal', VideoSchema),
-
-  Snack: mongoose.model('Snack', VideoSchema),
-
-  Sport: mongoose.model('Sport', VideoSchema),
-
-  Diet: mongoose.model('Diet', VideoSchema),
-
-  Wellbeing: mongoose.model('Wellbeing', VideoSchema),
+  mealModel,
+  snackModel,
+  sportModel,
+  dietModel,
+  wellbeingModel,
 };

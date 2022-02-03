@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
  * Properties used: Title, Description, Thumbnail, PublishTime, isLive, URL ...
  * Properties to be added: viewCount, likeCount, commentCount
  */
-module.exports = mongoose.model('Channel', new mongoose.Schema({
+
+const channelModel = mongoose.model('Channel', new mongoose.Schema({
   id: {
     type: String,
     required: true,
@@ -24,3 +25,7 @@ module.exports = mongoose.model('Channel', new mongoose.Schema({
     type: String,
   },
 }));
+
+module.exports = {
+  channelModel,
+};
