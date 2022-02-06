@@ -3,7 +3,8 @@ const express = require('express');
 const app = express();
 const videoListApi = require('./src/api/videoList');
 const { logger } = require('./src/config/logger');
-const db = require('./src/queries/dbConnect');
+const db = require('./src/loaders/database');
+const { createSearchKeyword } = require('./src/loaders/searchKeywordCreate');
 
 const port = 16261;
 
@@ -13,12 +14,13 @@ async function main() {
   });
 
   app.use('/', videoListApi);
-
-  try {
-    db.connectToDb();
-  } catch (e) {
-    logger.error(`Server Init Error ${e}`);
-  }
+  db.connectOnDatabase()
+    .then(() => {
+      createSearchKeyword();
+    })
+    .catch((e) => {
+      logger.error(`Server Init Error ${e}`);
+    });
 }
 
 main();
