@@ -1,10 +1,10 @@
 const videoListModel = require('../queries/videoList');
 
-async function getRandomVideo(theme) {
-  const videoList = videoListModel.getRandomVideo(theme);
+async function getRandomVideoOfTopic(topic) {
+  const videoList = videoListModel.getRandomVideoOfTopic(topic);
   return videoList;
 }
 
 module.exports = {
-  getRandomVideo,
+  getRandomVideoOfTopic,
 };

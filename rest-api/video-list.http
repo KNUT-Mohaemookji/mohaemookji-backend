@@ -1,0 +1,5 @@
+@serverUrl=http://127.0.0.1:16261
+
+### get RandomVideoLsit All
+url 127.0.0.1/videoList/meals:16261
+

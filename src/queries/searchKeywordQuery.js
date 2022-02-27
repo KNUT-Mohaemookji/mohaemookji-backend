@@ -14,7 +14,8 @@ function getData(collectionName, value) {
       }
     });
   } catch (e) {
-    logger.info(`model query error ${e}`);
+    logger.info('model query error %s', e);
+    throw new Error(e);
   }
   return queryResult;
 }

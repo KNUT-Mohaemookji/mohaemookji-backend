@@ -37,25 +37,25 @@ function getModel(collectionName) {
   let model;
 
   switch (collectionName) {
-    case 'mealModel':
+    case 'meal':
       model = mealModel;
       break;
-    case 'snackModel':
+    case 'snack':
       model = snackModel;
       break;
-    case 'sportModel':
+    case 'sport':
       model = sportModel;
       break;
-    case 'dietModel':
+    case 'diet':
       model = dietModel;
       break;
-    case 'wellbeingModel':
+    case 'wellbeing':
       model = wellbeingModel;
       break;
-    case 'channelModel':
+    case 'channel':
       model = channelModel;
       break;
-    case 'searchKeywordModel':
+    case 'searchKeyword':
       model = searchKeywordModel;
       break;
     default:

@@ -11,7 +11,7 @@ async function createSearchKeyword() {
   logger.info(`검색어 : ${JSON.stringify(topics)}`);
 
   // FIX 임시로 아래와 같이 설정
-  const result = searchKeywordQuery.getData('snackModel', { query: '케이크' });
+  const result = searchKeywordQuery.getData('snack', { query: '케이크' });
 
   logger.info(result);
 }

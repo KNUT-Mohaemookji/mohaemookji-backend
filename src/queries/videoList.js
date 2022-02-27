@@ -1,25 +1,52 @@
 const { logger } = require('../config/logger');
 const db = require('./databaseConnect');
 
-function getRandomVideo(collectionName, value) {
+function getRandomVideoOfTopic(collectionName) {
   const model = db.getModel(collectionName);
-  let queryResult;
+  const duple = [];
 
   try {
-    // FIX 모델에서 랜덤으로 비디오를 가져오도록 설정
-    queryResult = model.findOne(value, (err, datas) => {
+    const randomArrange = model.count();
+    const randomIndex = Math.floor(Math.random() * randomArrange);
+
+    logger.info(` : ${randomIndex}`);
+    const queryResult = model.find((err, datas) => {
       if (err) throw err;
       else {
-        const result = datas.title;
-        return result;
+        for (let i = 0; i < 9; i += 1) {
+          if (!duple.includes(randomIndex)) {
+            logger.info(
+              i + 1,
+              '번 영상\n',
+              'title :',
+              datas[randomIndex].title,
+              '\nthumbnail :',
+              datas[randomIndex].thumbnail,
+              '\nlink :',
+              datas[randomIndex].link,
+              '\n',
+            );
+            duple.push(randomIndex);
+          } else {
+            duple.pop();
+            i -= 1;
+          }
+        }
+        logger.info('출력한 데이터 %s', datas);
+        return datas;
       }
     });
+    return queryResult;
   } catch (e) {
-    logger.info(`model query error ${e}`);
+    logger.info('model query error %s', e);
+    throw new Error(e);
   }
-  return queryResult;
 }
 
+// function getAllRandomVideo() {
+//   const model = db.getModel(collectionName);
+// }
+
 module.exports = {
-  getRandomVideo,
+  getRandomVideoOfTopic,
 };
