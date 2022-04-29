@@ -4,10 +4,13 @@ const app = express();
 const { logger } = require('./src/config/logger');
 const db = require('./src/queries/databaseConnect');
 const { createSearchKeyword } = require('./src/loaders/searchKeywordCreate');
+
 const videoList = require('./src/api/videoList');
+const youtubeVideoCollect = require('./src/api/youtubeVideoCollect');
 
 const port = 16261;
 app.use('/video-list', videoList);
+app.use('/yvc-server', youtubeVideoCollect);
 
 async function main() {
   app.listen(port, () => {

@@ -1,1 +1,1 @@
-// 유튜브 API를 이용하여 동영상 및 채널들을 DB에 저장하는 서비스 로직 구현
+const youtubeSearch = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=kpop+music&key={본인의_API_KEY}'

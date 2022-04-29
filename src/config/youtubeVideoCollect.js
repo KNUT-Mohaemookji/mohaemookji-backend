@@ -1,8 +1,6 @@
-const youtubeVideoCollectService = require('../services/youtubeVideoCollect');
+const KEY = require('../jobs/token')();
 
-const KEY = youtubeVideoCollectService.getYoutubeTokenKeys();
-
-const apiOptions = {
+const apiOpts = {
   search: {
     key: KEY,
     part: 'id',
@@ -33,6 +31,4 @@ const apiOptions = {
   },
 };
 
-module.exports = {
-  apiOptions,
-};
+module.exports = apiOpts;
