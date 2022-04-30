@@ -1,1 +1,0 @@
-const youtubeSearch = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=kpop+music&key={본인의_API_KEY}'
