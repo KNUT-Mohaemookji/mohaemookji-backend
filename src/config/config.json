@@ -1,0 +1,9 @@
+{
+    "cooking": {
+        "themes": [
+            "meal", "snack", "diet", "sports", "wellbeing"
+        ]
+    },
+    "youtubeApiOption": ["video", "channel"],
+    "tokenCount": 4
+}

@@ -2,7 +2,9 @@ const express = require('express');
 
 const app = express();
 const db = require('./src/loader/database');
-const { logger } = require('./src/config/logger');
+const { logger } = require('./src/util/logger');
+const KeywordUpdater = require('./src/loader/keyword');
+const ConfigUpdater = require('./src/loader/config');
 const CookingVideoApi = require('./src/api/cookingVideo');
 
 const port = 16261;
@@ -15,8 +17,10 @@ async function main() {
 
   try {
     await db.connectOnDatabase();
+    await KeywordUpdater.updateKeywords();
+    await ConfigUpdater.updateConfig();
   } catch (e) {
-    logger.error('Server Init Error %s', e);
+    logger.error(`[APP-INIT] ${e}`);
   }
 }
 
