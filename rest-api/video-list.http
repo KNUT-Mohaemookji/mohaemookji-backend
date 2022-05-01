@@ -1,7 +1,4 @@
 @serverUrl=http://127.0.0.1:16261
 
 ### get RandomVideoLsit All
-url 127.0.0.1/videoList/meals:16261
-
-### youtube
-GET https://www.youtube.com/watch?v=AIzaSyD0D2_MGBXiTyA4sSxebDo9iJkHEGGVZw8
+GET {{serverUrl}}/cooking-video/test
