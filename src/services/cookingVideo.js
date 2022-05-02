@@ -7,6 +7,10 @@ const CookingVideoQuery = require('../queries/cookingVideo');
 const keywordQuery = require('../queries/keyword');
 const configQuery = require('../queries/config');
 
+async function getRandomCookingVideo(theme) {
+  return CookingVideoQuery.getRandomCookingVideo(theme);
+}
+
 async function saveCookingVideo() {
   const option = 'video';
   const type = 'cooking';
@@ -22,7 +26,7 @@ async function saveCookingVideo() {
       for (const keyword of keywords1) {
         try {
           // 모든 token을 다 사용한 경우 로직을 끝낸다.
-          if (tokenIndex >= tokenCount) {
+          if (tokenIndex > tokenCount) {
             return { result: false, code: 'allTokensExpired' };
           }
 
@@ -60,5 +64,6 @@ async function saveCookingVideo() {
 }
 
 module.exports = {
+  getRandomCookingVideo,
   saveCookingVideo,
 };

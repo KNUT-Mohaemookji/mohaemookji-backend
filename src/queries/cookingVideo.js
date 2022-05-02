@@ -1,5 +1,24 @@
 const { CookingVideoModel } = require('../models/cookingVideo');
 
+async function getRandomCookingVideo(theme) {
+  try {
+    if (theme) {
+      return CookingVideoModel.aggregate([
+        {
+          $match: { theme },
+        },
+        { $sample: { size: 10 } },
+      ]);
+    }
+
+    return CookingVideoModel.aggregate([
+      { $sample: { size: 10 } },
+    ]);
+  } catch (e) {
+    throw new Error(e);
+  }
+}
+
 async function saveCookingVideo(updates) {
   try {
     updates.forEach(async (update) => {
@@ -14,5 +33,6 @@ async function saveCookingVideo(updates) {
 }
 
 module.exports = {
+  getRandomCookingVideo,
   saveCookingVideo,
 };

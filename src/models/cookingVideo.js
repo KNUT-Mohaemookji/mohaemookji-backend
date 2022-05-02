@@ -28,6 +28,9 @@ const CookingVideoModel = mongoose.model(
       type: String,
       required: true,
     },
+    theme: {
+      type: String,
+    },
   }, { collection: 'CookingVideo' }),
 );
 

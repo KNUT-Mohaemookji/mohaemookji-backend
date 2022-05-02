@@ -1,4 +1,7 @@
 @serverUrl=http://127.0.0.1:16261
 
-### get RandomVideoLsit All
-GET {{serverUrl}}/cooking-video/test
+### get random cooking video
+GET {{serverUrl}}/cooking-video?theme=meal
+
+### save cooking Video
+GET {{serverUrl}}/cooking-video/test/test

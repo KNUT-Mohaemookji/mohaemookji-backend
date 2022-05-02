@@ -55,15 +55,29 @@ async function getYoutubeApiResponse(option, keyword, theme, keyIndex) {
   try {
     const results = (await requestToYoutube(option, keys[keyIndex], keyword)).data.items;
 
-    return results.map(({ id, snippet }) => ({
-      keyword,
-      videoId: id.videoId,
-      title: snippet.title,
-      thumbnail: snippet.thumbnails.default.url,
-      url: `https://www.youtube.com/watch?v=${id.videoId}`,
-      channelId: snippet.channelId,
-      theme,
-    }));
+    if (option === 'video') {
+      return results.map(({ id, snippet }) => ({
+        keyword,
+        videoId: id.videoId,
+        title: snippet.title,
+        thumbnail: snippet.thumbnails.default.url,
+        url: `https://www.youtube.com/watch?v=${id.videoId}`,
+        channelId: snippet.channelId,
+        theme,
+      }));
+    }
+
+    if (option === 'channel') {
+      return results.map(({ id, snippet }) => ({
+        keyword,
+        channelId: id.channelId,
+        title: snippet.title,
+        thumbnail: snippet.thumbnails.default.url,
+        url: `https://www.youtube.com/watch?v=${id.videoId}`,
+      }));
+    }
+
+    return null;
   } catch (e) {
     if (e.message === expireTokenError) {
       return { isExpire: true, tokenCount: keys.length };
