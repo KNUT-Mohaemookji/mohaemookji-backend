@@ -4,4 +4,4 @@
 GET {{serverUrl}}/cooking-video?theme=meal
 
 ### save cooking Video
-GET {{serverUrl}}/cooking-video/test/test
+GET {{serverUrl}}/cooking-video/test
